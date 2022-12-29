@@ -1,0 +1,29 @@
+.footer {
+  background-color: rgb(33, 37, 41);
+  color: white;
+  min-width: 100%;
+  text-align: center;
+  padding: 20px 10px 10px 10px;
+}
+
+.footer div {
+  width: fit-content;
+  height: min-content;
+  margin: 0 auto;
+}
+
+.footer svg {
+  font-size: 30px;
+  margin: 15px;
+  color: rgb(200, 200, 200);
+}
+
+.footer svg:hover {
+  cursor: pointer;
+  color: white;
+}
+
+.footer p {
+  font-size: 18px;
+  color: rgb(200, 200, 200);
+}

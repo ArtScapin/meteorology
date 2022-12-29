@@ -1,12 +1,11 @@
 import { Container, Navbar } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
+import style from "./NavBar.module.css";
 
 function NavBar() {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-      <Container>
-        <Navbar.Brand href="#home">Meteorology</Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+      <Container className={style.nav}>
+        <Navbar.Brand>Meteorology</Navbar.Brand>
       </Container>
     </Navbar>
   );
