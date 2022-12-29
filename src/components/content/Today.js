@@ -1,10 +1,11 @@
-import { Container, Row, Col, Image } from "react-bootstrap";
+import { Row, Col, Image } from "react-bootstrap";
 import { WiCloudy, WiStrongWind, WiHumidity, WiCelsius } from "react-icons/wi";
+import Section from "../layout/Section";
 import style from "./Today.module.css";
 
 function Today({ location, temp, icon, cloud, wind, humidity, updateAt }) {
   return (
-    <Container className={style.container}>
+    <Section>
       <div className={style.content}>
         <Row>
           <Col>
@@ -37,8 +38,8 @@ function Today({ location, temp, icon, cloud, wind, humidity, updateAt }) {
           </Col>
         </Row>
       </div>
-      <p>Atualizado em {updateAt}</p>
-    </Container>
+      <p className={style.updateAt}>Atualizado em {updateAt}</p>
+    </Section>
   );
 }
 
