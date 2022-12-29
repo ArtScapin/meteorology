@@ -1,7 +1,16 @@
-.nav span {
-  color: rgb(200, 200, 200);
-  font-size: 32px;
+.navbar {
+  background-color: #292929;
 }
-.nav span:hover {
-  color: rgb(200, 200, 200);
+
+.navbar * {
+  background-color: #292929;
+}
+
+.navbar div {
+  padding: 15px;
+}
+
+.navbar h1 {
+  color: #cccccc;
+  font-size: 32px;
 }
