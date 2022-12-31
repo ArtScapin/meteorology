@@ -18,7 +18,7 @@ function Content() {
     if (!current || !forecast || !location) {
       weatherApi
         .get(
-          `forecast.json?key=${process.env.REACT_APP_API_KEY}&q=${coords.latitude},${coords.longitude}&days=3`
+          `forecast.json?key=a0e5965dfa524519a4f182402223112&q=${coords.latitude},${coords.longitude}&days=3`
         )
         .then((res) => {
           setCurrent(res.data.current);
