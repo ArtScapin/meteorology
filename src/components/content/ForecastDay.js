@@ -1,14 +1,16 @@
 import { Row, Col } from "react-bootstrap";
 import { BsArrowDownUp } from "react-icons/bs";
-import { WiCloudy, WiStrongWind, WiHumidity } from "react-icons/wi";
+import { WiRain, WiStrongWind, WiHumidity } from "react-icons/wi";
 import style from "./ForecastDay.module.css";
 
-function ForecastDay({ day, tempMin, tempMax, cloud, wind, humidity }) {
+function ForecastDay({ day, tempMin, tempMax, cloud, wind, humidity, rain }) {
   return (
     <div className={style.card}>
       <Row className={style.title}>
         <Col>
-          <span>{day}</span>
+          <span>
+            {day.split("-")[2]}/{day.split("-")[1]}
+          </span>
         </Col>
       </Row>
       <Row className={style.content}>
@@ -24,8 +26,8 @@ function ForecastDay({ day, tempMin, tempMax, cloud, wind, humidity }) {
         <Row>
           <Col>
             <span>
-              <WiCloudy />
-              {cloud} %
+              <WiRain />
+              {rain} %
             </span>
           </Col>
         </Row>

@@ -7,9 +7,15 @@ function Footer() {
   return (
     <Container className={style.footer}>
       <div>
-        <FaLinkedinIn />
-        <FaInstagram />
-        <TiWeatherCloudy />
+        <a href="https://www.linkedin.com/in/arthur-scapin-pereira-a130b0243/">
+          <FaLinkedinIn />
+        </a>
+        <a href="https://www.instagram.com/arthscapin/">
+          <FaInstagram />
+        </a>
+        <a href="https://www.weatherapi.com/">
+          <TiWeatherCloudy />
+        </a>
         <br />
         <p>Meteorology &copy; 2022</p>
       </div>

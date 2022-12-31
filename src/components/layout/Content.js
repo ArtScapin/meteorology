@@ -1,19 +1,40 @@
+import { useState } from "react";
 import { Container } from "react-bootstrap";
 import Forecast from "../content/Forecast";
 import Today from "../content/Today";
+import weatherApi from "../../services/Api";
 
 function Content() {
+  const [current, setCurrent] = useState();
+  const [forecast, setForecast] = useState();
+  const [location, setLocation] = useState();
+  const [coords, setCoords] = useState();
+
+  if (!coords) {
+    navigator.geolocation.watchPosition((position) =>
+      setCoords(position.coords)
+    );
+  } else {
+    if (!current || !forecast || !location) {
+      weatherApi
+        .get(
+          `forecast.json?key=${process.env.REACT_APP_API_KEY}&q=${coords.latitude},${coords.longitude}&days=3`
+        )
+        .then((res) => {
+          setCurrent(res.data.current);
+          setForecast(res.data.forecast.forecastday);
+          setLocation(res.data.location);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }
+  }
+
   return (
     <Container>
-      <Today
-        location={"Santa Maria"}
-        temp={25}
-        cloud={7}
-        humidity={30}
-        wind={26}
-        updateAt={"29-12-2022 16:35"}
-      />
-      <Forecast />
+      {current && location && <Today current={current} location={location} />}
+      {forecast && <Forecast forecast={forecast} />}
     </Container>
   );
 }
