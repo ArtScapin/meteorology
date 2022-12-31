@@ -12,6 +12,7 @@ import style from "./Today.module.css";
 function Today({ current, location }) {
   const local = location.name;
   const { temp_c, feelslike_c, wind_kph, humidity, last_updated } = current;
+  console.log(process.env.REACT_APP_API_KEY);
 
   return (
     <Section>
