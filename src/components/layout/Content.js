@@ -3,6 +3,7 @@ import { Container } from "react-bootstrap";
 import Forecast from "../content/Forecast";
 import Today from "../content/Today";
 import weatherApi from "../../services/Api";
+import style from "./Content.module.css";
 
 function Content() {
   const [current, setCurrent] = useState();
@@ -32,7 +33,7 @@ function Content() {
   }
 
   return (
-    <Container>
+    <Container className={style.container}>
       {current && location && <Today current={current} location={location} />}
       {forecast && <Forecast forecast={forecast} />}
     </Container>
