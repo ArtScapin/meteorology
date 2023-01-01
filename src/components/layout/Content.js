@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import Forecast from "../content/Forecast";
 import Today from "../content/Today";
+import Loading from "../content/Loading";
 import weatherApi from "../../services/Api";
 import style from "./Content.module.css";
 
@@ -10,13 +11,13 @@ function Content() {
   const [forecast, setForecast] = useState();
   const [location, setLocation] = useState();
   const [coords, setCoords] = useState();
+  const [isLoading, setIsLoading] = useState(true);
 
-  if (!coords) {
-    navigator.geolocation.watchPosition((position) =>
-      setCoords(position.coords)
-    );
-  } else {
-    if (!current || !forecast || !location) {
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      setCoords(position.coords);
+    });
+    if (coords && isLoading) {
       weatherApi
         .get(
           `forecast.json?key=a0e5965dfa524519a4f182402223112&q=${coords.latitude},${coords.longitude}&days=3`
@@ -28,14 +29,25 @@ function Content() {
         })
         .catch((err) => {
           console.error(err);
+        })
+        .finally(() => {
+          setIsLoading(false);
         });
     }
-  }
+  });
 
   return (
     <Container className={style.container}>
-      {current && location && <Today current={current} location={location} />}
-      {forecast && <Forecast forecast={forecast} />}
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <>
+          {current && location && (
+            <Today current={current} location={location} />
+          )}
+          {forecast && <Forecast forecast={forecast} />}
+        </>
+      )}
     </Container>
   );
 }
